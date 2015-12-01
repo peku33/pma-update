@@ -23,10 +23,10 @@
 # THE SOFTWARE.
 
 
-UNZIP_CMD=`which unzip`
-if test -z "$UNZIP_CMD"
+TAR_CMD=`which tar`
+if test -z "$TAR_CMD"
 then
-	echo "* unzip command not found"
+	echo "* tar command not found"
 	exit 2
 fi
 
@@ -49,7 +49,7 @@ then
 	echo "* Usage: $0 <phpMyAdmin directory>"
 	echo ""
 	echo "* This simple script will:"
-	echo "* 1. Download and unpack latest phpMyAdmin (zip) into temporary directory"
+	echo "* 1. Download and unpack latest phpMyAdmin-latest-all-languages.tar.bz2 into temporary directory"
 	echo "* 2. Remove <phpMyAdmin directory>_old and rename <phpMyAdmin directory> to <phpMyAdmin directory>_old"
 	echo "* 3. Move downloaded phpMyAdmin to <phpMyAdmin directory>"
 	echo "* 4. Copy config.inc.php from <phpMyAdmin directory>_old to <phpMyAdmin directory>"
@@ -60,14 +60,14 @@ then
 fi
 
 #1
-DOWNLOAD_URL="http://sourceforge.net/projects/phpmyadmin/files/latest/download"
+DOWNLOAD_URL="https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.bz2"
 TEMP_FILE_NAME=`${MKTEMP_CMD}` || exit 1
 TEMP_DIR_NAME=`${MKTEMP_CMD} -d` || exit 1
 
 echo "* Downloading ${DOWNLOAD_URL} -> ${TEMP_FILE_NAME}"
 ${WGET_CMD} -q -O ${TEMP_FILE_NAME} ${DOWNLOAD_URL} || exit 1
 echo "* Unpacking ${TEMP_FILE_NAME} -> ${TEMP_DIR_NAME}"
-${UNZIP_CMD} -q -d ${TEMP_DIR_NAME} ${TEMP_FILE_NAME} || exit 1
+${TAR_CMD} -xf ${TEMP_FILE_NAME} -C ${TEMP_DIR_NAME} || exit 1
 echo "* Removing ${TEMP_FILE_NAME}"
 rm ${TEMP_FILE_NAME}
 

@@ -4,7 +4,7 @@ Script for automatic update of phpMyAdmin
 **Requirements - basic linux commands**
 * bash
 * wget
-* unzip
+* tar
 * mktemp
 
 **Usage:**
@@ -15,8 +15,7 @@ Script for automatic update of phpMyAdmin
 
 
 This simple script will:
-
-1. Download and unpack latest phpMyAdmin (zip) into temporary directory
+1. Download and unpack latest phpMyAdmin-latest-all-languages.tar.bz2 into temporary directory
 2. Remove <phpMyAdmin directory>_old and rename <phpMyAdmin directory> to <phpMyAdmin directory>_old
 3. Move downloaded phpMyAdmin to <phpMyAdmin directory>
 4. Copy config.inc.php from <phpMyAdmin directory>_old to <phpMyAdmin directory>
