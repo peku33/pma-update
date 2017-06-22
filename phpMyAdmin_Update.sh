@@ -60,7 +60,7 @@ then
 fi
 
 #1
-DOWNLOAD_URL="https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.bz2"
+DOWNLOAD_URL="https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz"
 TEMP_FILE_NAME=`${MKTEMP_CMD}` || exit 1
 TEMP_DIR_NAME=`${MKTEMP_CMD} -d` || exit 1
 
